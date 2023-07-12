@@ -23,6 +23,7 @@ class scraper():
     options = webdriver.ChromeOptions()
     chrome_options = Options()
     options.add_argument("--headless=new")
+    options.add_argument("--start-maximized")
     options.add_argument("--incognito")
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')

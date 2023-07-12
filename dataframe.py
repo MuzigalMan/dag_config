@@ -65,8 +65,3 @@ def main(data:list):
     
     conn.execute('SET SQL_REQUIRE_PRIMARY_KEY = OFF;')
     df_filtered.to_sql('dag_config', conn, if_exists='replace', index=False)
-
-
-# getData("Full Stack Developer","Hyderabad") 
-# temp = {'job': 'watchman', 'location':'hyd'}
-# main(temp)
