@@ -1,0 +1,8 @@
+.pyc
+.xlsx
+.pdf
+env
+*.pyc
+list.py
+result
+.env
