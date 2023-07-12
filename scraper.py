@@ -95,8 +95,11 @@ class scraper():
             path_click = job.find_element(By.XPATH,click_path).click()
             time.sleep(3)
 
-            show_click = "/html/body/div[1]/div/section/div[2]/div/section[1]/div/div/section/button[1]"
-            click_it =  self.driver.find_element(By.XPATH,show_click).click()
+            try:
+                show_click = "/html/body/div[1]/div/section/div[2]/div/section[1]/div/div/section/button[1]"
+                click_it =  self.driver.find_element(By.XPATH,show_click).click()
+            except:
+                pass
 
             jd_path = self.driver.find_element(By.CLASS_NAME,"show-more-less-html__markup").text
             jd.append(jd_path)
