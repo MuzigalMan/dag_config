@@ -27,8 +27,12 @@ def main(data:list):
         userLevel = ["Mid-Senior level","Executive"]
     elif userExp > 10:
         userLevel = "Director"
+        
+    # scraper
+    getData(job,location)
 
     data = pd.read_csv('./data/job_data')
+    data.drop(data.filter(regex="Unname"),axis=1, inplace=True)
     data['Date'] = pd.to_datetime(data['Date'])
 
     if isinstance(userLevel, str):
@@ -38,8 +42,6 @@ def main(data:list):
     else:
         raise ValueError('userLevel must be a string or a list')
     
-    # scraper
-    getData(job,location)
 
     df_filtered['Matched Skills'] = df_filtered['JD'].apply(lambda x: [s for s in userSkill if s.lower() in x.lower()])
 
@@ -51,17 +53,17 @@ def main(data:list):
 
     df_filtered['job_code'] = job
     
-    df_filtered['user_name'] = name.split('_')[1]
+    df_filtered['user_name'] = name.split('_')[0]
     
-    # dag_table = pd.read_sql_query("SELECT * FROM dag_config")
+    dag_table = pd.read_sql_query("SELECT * FROM dag_config")
     
-    # def find_missing_rows(df1, df2):
-    #     merged_df = pd.merge(df1, df2, indicator=True, how='left')
-    #     missing_rows = merged_df.loc[merged_df['_merge'] == 'left_only']
-    #     missing_rows = missing_rows.drop(columns='_merge')
-    #     return missing_rows
+    def find_missing_rows(df1, df2):
+        merged_df = pd.merge(df1, df2, indicator=True, how='left')
+        missing_rows = merged_df.loc[merged_df['_merge'] == 'left_only']
+        missing_rows = missing_rows.drop(columns='_merge')
+        return missing_rows
     
-    # final_df = find_missing_rows(df_filtered,dag_table)
+    final_df = find_missing_rows(df_filtered,dag_table)
     
     conn.execute('SET SQL_REQUIRE_PRIMARY_KEY = OFF;')
-    df_filtered.to_sql('dag_config', conn, if_exists='replace', index=False)
+    final_df.to_sql('dag_config', conn, if_exists='append', index=False)

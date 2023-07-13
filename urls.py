@@ -21,7 +21,7 @@ class url():
             else:
                 place += name
 
-        link = f"https://www.linkedin.com/jobs/search?keywords={position}&location={place}&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0&distance=75"
+        link = f"https://www.linkedin.com/jobs/search?keywords={position}&location={place}&trk=public_jobs_jobs-search-bar_search-submit&position=1&pageNum=0&distance=75&f_TPR=r86400"
         return link
 
     def naukri_url(self):

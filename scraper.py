@@ -22,8 +22,8 @@ class scraper():
     service = Service(r"./chromedriver.exe")
     options = webdriver.ChromeOptions()
     chrome_options = Options()
-    options.add_argument("--headless=new")
     options.add_argument("--start-maximized")
+    options.add_argument("--headless=new")
     options.add_argument("--incognito")
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
@@ -145,5 +145,5 @@ class scraper():
 
         
 
-sc = scraper("Data Scientist","Hyderabad")
-sc.linkedin_data_1()
+# sc = scraper("Data Scientist","Hyderabad")
+# sc.linkedin_data_1()
