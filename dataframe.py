@@ -2,6 +2,7 @@ from scraper import scraper as sc
 import pandas as pd
 from reparser import parser
 from config import conn
+import os
 
 
 def getData(job,location):
