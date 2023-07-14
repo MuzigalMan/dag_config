@@ -31,7 +31,7 @@ def main(data:list):
     # scraper
     getData(job,location)
 
-    data = pd.read_csv('./data/job_data')
+    data = pd.read_csv(os.getenv('CSVDATA'))
     data.drop(data.filter(regex="Unname"),axis=1, inplace=True)
     data['Date'] = pd.to_datetime(data['Date'])
 
