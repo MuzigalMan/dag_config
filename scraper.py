@@ -9,6 +9,7 @@ from selenium.webdriver.chrome.options import Options
 import time
 import re
 import pandas as pd
+import os
 from urls import url
 from dotenv import load_dotenv
 load_dotenv()
@@ -20,7 +21,7 @@ class scraper():
         self.location = location
         self.url = url(position,location)
 
-    service = Service('DRIVER')
+    service = Service(os.getenv('DRIVER'))
     options = webdriver.ChromeOptions()
     chrome_options = Options()
     options.add_argument("--window-size=1920,1080")

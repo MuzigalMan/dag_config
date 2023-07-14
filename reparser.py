@@ -16,13 +16,13 @@ nlp = spacy.load('en_core_web_sm')
 
 matcher = Matcher(nlp.vocab) 
 
-file = "./data/linkedin_skills.txt"
+file = os.getenv('SKILLS')
 file = open(file, "r", encoding='utf-8')    
 skill = [line.strip().lower() for line in file]
 skillsmatcher = PhraseMatcher(nlp.vocab)
 patterns = [nlp.make_doc(text) for text in skill if len(nlp.make_doc(text)) < 10]
 skillsmatcher.add("Job title", None, *patterns)
-header_file = "./data/headers.txt"
+header_file = os.getenv('HEADERS')
 header_file = open(header_file, "r", encoding='utf-8')
 headers = [line.strip().lower() for line in header_file]
 
