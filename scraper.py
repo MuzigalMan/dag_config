@@ -10,7 +10,8 @@ import time
 import re
 import pandas as pd
 from urls import url
-
+from dotenv import load_dotenv
+load_dotenv()
 
 class scraper():
 
@@ -19,7 +20,7 @@ class scraper():
         self.location = location
         self.url = url(position,location)
 
-    service = Service(r"./chromedriver.exe")
+    service = Service('DRIVER')
     options = webdriver.ChromeOptions()
     chrome_options = Options()
     options.add_argument("--start-maximized")
