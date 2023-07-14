@@ -8,7 +8,7 @@ from spacy.matcher import Matcher
 from spacy.matcher import PhraseMatcher
 from datetime import date
 import nltk
-nltk.download('stopword')
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
