@@ -46,7 +46,7 @@ work_and_employment = (
     )
 
 def parser(name):
-    resume_file = f"{os.getenv('SKILLS')}{name}.pdf"
+    resume_file = f"{os.getenv('PATH')}{name}.pdf"
     _, file_extension = os.path.splitext(resume_file)
     if file_extension == '.pdf':
         with open(resume_file, 'rb') as pdf_file:
