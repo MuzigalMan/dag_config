@@ -55,7 +55,7 @@ def main(data:list):
     
     df_filtered['user_name'] = name.split('_')[0]
     
-    dag_table = pd.read_sql_query("SELECT * FROM dag_config")
+    dag_table = pd.read_sql_query("SELECT * FROM dag_config",conn)
     
     def find_missing_rows(df1, df2):
         merged_df = pd.merge(df1, df2, indicator=True, how='left')
